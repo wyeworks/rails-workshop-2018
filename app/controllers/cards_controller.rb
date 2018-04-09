@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_list, only: [:create]
-  before_action :set_card, only: [:update]
+  before_action :set_card, only: [:update, :destroy]
 
   def create
     card = @list.cards.new(text: card_params[:text])
@@ -19,6 +19,12 @@ class CardsController < ApplicationController
       render json: @card.errors, status: :bad_request
     end
   end
+
+  def destroy
+    @card.destroy
+    render status: :no_content
+  end
+
 
   private
 

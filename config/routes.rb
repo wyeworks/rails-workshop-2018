@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :boards, only: %i[index create show] do
     resources :lists, only: %i[create show] do
-      resources :cards, only: %i[create show update]
+      resources :cards
     end
   end
 end

@@ -1,6 +1,10 @@
 class BoardsController < ApplicationController
   before_action :set_board, only: [:show]
 
+  def index
+    render json: Board.all
+  end
+
   def create
     board = Board.new(name: board_params[:name])
 
@@ -12,7 +16,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    render json: @board, status: :ok
+    render json: @board, include: { lists: { include: :cards } }
   end
 
   private

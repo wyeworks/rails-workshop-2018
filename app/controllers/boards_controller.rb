@@ -16,7 +16,7 @@ class BoardsController < ApplicationController
   end
 
   def show
-    render json: @board, status: :ok
+    render json: @board, include: { lists: { include: :cards } }
   end
 
   private

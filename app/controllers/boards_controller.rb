@@ -8,8 +8,12 @@ class BoardsController < ApplicationController
   def create
     board = Board.new(name: board_params[:name])
 
+    # Create default lists
+    board.lists.build(name: 'To Do')
+    board.lists.build(name: 'Personal')
+
     if board.save
-      render json: board, status: :created
+      render json: board, include: :lists, status: :created
     else
       render json: board.errors, status: :bad_request
     end

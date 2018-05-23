@@ -30,6 +30,6 @@ class BoardsController < ApplicationController
   end
 
   def set_board
-    @board = Board.find(params[:id])
+    @board = Board.where(id: params[:id]).includes(lists: :cards).first
   end
 end

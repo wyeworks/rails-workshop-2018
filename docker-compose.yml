@@ -1,0 +1,9 @@
+# Ejecutar docker-compose up --scale web=30
+
+version: '3'
+services:
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - 3001-3030:3000

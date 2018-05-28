@@ -10,7 +10,7 @@ class BoardsController < ApplicationController
 
   # GET /boards/1
   def show
-    render json: @board
+    render json: @board, include: :lists
   end
 
   # POST /boards
@@ -41,7 +41,7 @@ class BoardsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_board
-      @board = Board.find(params[:id])
+      @board = Board.where(id: params[:id]).includes(:lists).first
     end
 
     # Only allow a trusted parameter "white list" through.

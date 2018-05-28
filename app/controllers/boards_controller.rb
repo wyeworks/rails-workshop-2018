@@ -17,8 +17,11 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
 
+    @board.lists.build(name: 'To Do')
+    @board.lists.build(name: 'Personal')
+
     if @board.save
-      render json: @board, status: :created, location: @board
+      render json: @board, include: :lists, status: :created, location: @board
     else
       render json: @board.errors, status: :unprocessable_entity
     end

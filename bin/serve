@@ -3,6 +3,7 @@
 set -e
 
 git checkout api-for-react
+git fetch origin
 git pull origin api-for-react
 
 echo "##############################################"

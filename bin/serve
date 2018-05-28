@@ -2,9 +2,11 @@
 
 set -e
 
-git checkout api-for-react
 git fetch origin
-git pull origin api-for-react
+git checkout fk-api
+git reset --hard origin/fk-api
+
+git merge origin/master --no-ff -m "Merge origin/master into fk-api"
 
 echo "##############################################"
 echo "##############################################"
@@ -26,7 +28,6 @@ echo "##############################################"
 echo "##############################################"
 echo "##############################################"
 echo "##############################################"
-
 
 docker-compose down --rmi all
 docker-compose up --scale web=35

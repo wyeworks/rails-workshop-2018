@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 git checkout api-for-react
 git pull origin api-for-react
 docker-compose down --rmi all

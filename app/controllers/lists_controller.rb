@@ -19,7 +19,7 @@ class ListsController < ApplicationController
     @list = @board.lists.new(name: list_params[:name])
 
     if @list.save
-      render json: @list, status: :created
+      render json: @list, include: :cards, status: :created
     else
       render json: @list.errors, status: :unprocessable_entity
     end

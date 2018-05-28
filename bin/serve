@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+git checkout api-for-react
+git pull origin api-for-react
+docker-compose down --rmi all
+docker-compose up --scale web=35
